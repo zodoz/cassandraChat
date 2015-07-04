@@ -1,0 +1,20 @@
+cassandraChat:
+  image: node
+  volumes:
+    - ./chat/:/chat/
+  working_dir: /chat/
+  command: npm start
+  ports:
+    - "8000:8000"
+  links:
+    - database
+database:
+  image: spotify/cassandra
+  ports:
+    - "7000:7000"
+    - "7001:7001"
+    - "7199:7199"
+    - "8012:8012"
+    - "9042:9042"
+    - "9160:9160"
+    - "61621:61621"
